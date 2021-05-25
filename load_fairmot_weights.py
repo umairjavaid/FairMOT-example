@@ -3,7 +3,7 @@ import torch
 import torch.nn as nn
 import os
 
-def load_model(model, model_path, optimizer=None, resume=False, 
+def load_fairmot_weights(model, model_path, optimizer=None, resume=False, 
                lr=None, lr_step=None):
   start_epoch = 0
   checkpoint = torch.load(model_path, map_location=lambda storage, loc: storage)
