@@ -1,17 +1,16 @@
 from fairmot import get_pose_net
 from load_fairmot_weights import load_fairmot_weights
-import img_preprocess
-
+from img_preprocess import *
 import matplotlib.pyplot as plt
-import matplotlib.image as mpimg
 
 model = get_pose_net(34, heads={'hm': 1, 'wh': 4, 'id': 128, 'reg': 2}, head_conv=256)
 weights_path = "/content/FairMOT/models/crowdhuman_dla34.pth"
 model = load_fairmot_weights(model, weights_path)
 img_path = "/content/FairMOT-example/cover4.jpg"
-img = mpimg.imread(img_path)
-#img = load_img(img_path)
-plt.imshow(img)
-plt.show()
-#img = makeImgModelReady(img)
-#print(model(img))
+
+img = plt.imread(img_path)
+print(img.shape)
+
+img = makeImgModelReady(img)
+
+print(model(img))
